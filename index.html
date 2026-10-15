@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A practice online examination system with timed multiple-choice questions and automatic results.">
+  <title>ExamReady | Online Examination System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">Exam<span>Ready</span></a>
+    <span class="top-label">ONLINE EXAMINATION SYSTEM</span>
+  </header>
+
+  <main class="container">
+    <section id="welcomeScreen" class="welcome card">
+      <div class="hero-icon">✎</div>
+      <p class="eyebrow">PRACTICE • LEARN • IMPROVE</p>
+      <h1>Test your knowledge.</h1>
+      <p class="muted">
+        Take a timed multiple-choice test, track your progress,
+        and view your result instantly.
+      </p>
+
+      <form id="startForm">
+        <label for="studentName">Student name</label>
+        <input id="studentName" type="text" placeholder="Enter your full name"
+          maxlength="60" required autocomplete="name">
+        <div class="exam-info">
+          <div><strong>10</strong><span>Questions</span></div>
+          <div><strong>5 min</strong><span>Time limit</span></div>
+          <div><strong>100</strong><span>Total marks</span></div>
+        </div>
+        <button class="btn primary full" type="submit">Start Examination →</button>
+      </form>
+      <p class="small-note">Practice demo — your answers stay in this browser.</p>
+    </section>
+
+    <section id="examScreen" hidden>
+      <div class="exam-heading">
+        <div>
+          <p class="eyebrow">GENERAL KNOWLEDGE & TECHNOLOGY</p>
+          <h1>Online Examination</h1>
+          <p id="welcomeStudent" class="muted"></p>
+        </div>
+        <div class="timer-box">
+          <span>TIME LEFT</span>
+          <strong id="timer">05:00</strong>
+        </div>
+      </div>
+
+      <div class="progress-card card">
+        <div class="progress-label">
+          <span id="questionCounter">Question 1 of 10</span>
+          <span id="answeredCounter">0 answered</span>
+        </div>
+        <div class="progress-track">
+          <div id="progressBar" class="progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="exam-layout">
+        <section class="question-card card">
+          <p id="questionCategory" class="eyebrow">QUESTION 01</p>
+          <h2 id="questionText">Question text</h2>
+          <div id="options" class="options"></div>
+          <div class="question-actions">
+            <button id="previousBtn" class="btn secondary" type="button">← Previous</button>
+            <button id="nextBtn" class="btn primary" type="button">Next →</button>
+          </div>
+        </section>
+
+        <aside class="navigator card">
+          <h3>Question Navigator</h3>
+          <p class="muted small-note">Select a number to jump to a question.</p>
+          <div id="questionNav" class="question-nav"></div>
+          <div class="legend">
+            <span><i class="legend-dot done"></i> Answered</span>
+            <span><i class="legend-dot"></i> Unanswered</span>
+          </div>
+          <button id="submitBtn" class="btn danger full" type="button">
+            Submit Examination
+          </button>
+        </aside>
+      </div>
+      <p class="disclaimer">This is a practice demonstration, not a secure proctored examination.</p>
+    </section>
+
+    <section id="resultScreen" class="result card" hidden>
+      <div class="result-icon" id="resultIcon">✓</div>
+      <p class="eyebrow">EXAMINATION COMPLETED</p>
+      <h1 id="resultHeading">Your result</h1>
+      <p id="resultStudent" class="muted"></p>
+      <div class="score-circle" id="scoreCircle">
+        <strong id="scorePercent">0%</strong>
+        <span>Score</span>
+      </div>
+      <div class="result-stats">
+        <div><strong id="correctCount">0</strong><span>Correct</span></div>
+        <div><strong id="wrongCount">0</strong><span>Incorrect</span></div>
+        <div><strong id="unansweredCount">0</strong><span>Unanswered</span></div>
+      </div>
+      <p id="resultMessage" class="result-message"></p>
+      <h2 class="review-title">Answer Review</h2>
+      <div id="answerReview" class="answer-review"></div>
+      <button id="restartBtn" class="btn primary full" type="button">Take Another Exam ↻</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>ExamReady · Student Practice Project</p>
+    <p>Built with HTML, CSS & JavaScript</p>
+  </footer>
+
+  <dialog id="confirmDialog" class="confirm-dialog">
+    <h2>Submit your examination?</h2>
+    <p id="confirmText" class="muted"></p>
+    <div class="dialog-actions">
+      <button id="cancelSubmitBtn" class="btn secondary" type="button">Continue Exam</button>
+      <button id="confirmSubmitBtn" class="btn danger" type="button">Submit Now</button>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
